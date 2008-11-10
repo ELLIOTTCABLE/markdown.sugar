@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--	*	MARKDOWN Syntax Sugar
+		*	by David Czihak
+		*	www.davidczihak.com
+		*	this work is licensed under a Creative Commons Attribution-Non-Commercial-No Derivative Works 3.0 Austria License
+		*	http://idzr.org/k0zrm
+-->
+
+<syntax name="text.markdown">
+	<zones>
+	
+		<!-- HEADER -->
+		<zone name="attribute-name">
+			<expression>([#]{1,6}).*$\n?</expression>
+			<capture number="1" name="punctuation.definition.begin"/>
+			<capture number="1" name="keyword.control"/>
+		</zone>
+		
+		<!-- ITALIC -->
+		<zone name="string.quoted.markdown">
+			<expression>([\*_]{1}[^\*_\n]+[\*_]{1})</expression>
+		</zone>
+		
+		<!-- BOLD -->
+		<zone name="string.quoted.markdown">
+			<expression>([\*_]{2}[^\*_\n]+[\*_]{2})</expression>
+		</zone>
+		
+		<!-- CODE TAG -->
+		<zone name="meta.function.markdown">
+			<expression>([`]{1,2}[^`]*[`]{1,2})</expression>
+			<capture number="1" name="entity.name.function.markdown"/>
+		</zone>
+		
+		<!-- PRE BLOCK TAG -->
+		<zone name="comment.block.markdown">
+			<expression>([\t]{1}).*$([\n]{2})?</expression>
+			<capture number="0" name="punctuation.definition.end"/>
+		</zone>
+		
+		<!-- BLOCKQUOTE -->
+		<zone name="comment.block.markdown">
+			<expression>([>]{1}).*$([\n]{2})?</expression>
+			<capture number="1" name="punctuation.definition.begin"/>
+		</zone>
+		
+		<!-- LIST ITEMS -->
+		<zone name="attribute-name">
+			<expression>^([-+\*]{1}[^-+\*])(.*)$\n?</expression>
+			<capture number="1" name="punctuation.definition.begin"/>
+		</zone>
+		
+		<!-- HORIZONTAL RULER -->
+		<zone name="string.quoted.single.markdown">
+			<expression>([-\*_]{3}).$\n?</expression>
+		</zone>
+
+	</zones>
+</syntax>

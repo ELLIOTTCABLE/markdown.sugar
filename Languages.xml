@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings>
+	
+	<language id="text.html.markdown">
+		<root-zone>text.markdown</root-zone>
+		<name>Markdown</name>
+		<detectors>
+			<extension>markdown</extension>
+		</detectors>
+	</language>
+	
+</settings>
