@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 
-<!--	*	MARKDOWN Syntax Sugar
+<!--	*	MARKDOWN Syntax Sugar version 0.9.1
 		*	by David Czihak
 		*	www.davidczihak.com
 		*	this work is licensed under a Creative Commons Attribution-Non-Commercial-No Derivative Works 3.0 Austria License
@@ -9,12 +10,12 @@
 
 <syntax name="text.markdown">
 	<zones>
-	
+		
 		<!-- HEADER -->
-		<zone name="attribute-name">
-			<expression>([#]{1,6}).*$\n?</expression>
-			<capture number="1" name="punctuation.definition.begin"/>
-			<capture number="1" name="keyword.control"/>
+		<zone>
+			<expression>([#]{1,6})(.*)$\n?</expression>
+			<capture number="1" name="attribute-name"/>
+			<capture number="2" name="keyword.control"/>
 		</zone>
 		
 		<!-- ITALIC -->
@@ -35,26 +36,79 @@
 		
 		<!-- PRE BLOCK TAG -->
 		<zone name="comment.block.markdown">
-			<expression>([\t]{1}).*$([\n]{2})?</expression>
+			<expression>^([\t]{1}).*$([\n]{2})?</expression>
 			<capture number="0" name="punctuation.definition.end"/>
 		</zone>
 		
 		<!-- BLOCKQUOTE -->
 		<zone name="comment.block.markdown">
-			<expression>([>]{1}).*$([\n]{2})?</expression>
+			<expression>^([>]{1}).*$([\n]{2})?</expression>
 			<capture number="1" name="punctuation.definition.begin"/>
 		</zone>
 		
-		<!-- LIST ITEMS -->
+		<!-- UNORDERED LIST -->
 		<zone name="attribute-name">
 			<expression>^([-+\*]{1}[^-+\*])(.*)$\n?</expression>
 			<capture number="1" name="punctuation.definition.begin"/>
 		</zone>
 		
-		<!-- HORIZONTAL RULER -->
-		<zone name="string.quoted.single.markdown">
-			<expression>([-\*_]{3}).$\n?</expression>
+		<!-- ORDERED LIST -->
+		<zone>
+			<expression>^([0-9]\.)(.*)$\n?</expression>
+			<capture number="1" name="keyword.control"/>
+			<capture number="2" name="attribute-name"/>
 		</zone>
-
+		
+		<!-- HORIZONTAL RULER -->
+		<zone>
+			<expression>^([-\*_]{3,})</expression>
+			<capture number="1" name="keyword.control"/>
+		</zone>
+		
+		<!-- AUTO LINK / E-MAIL -->
+		<zone name="attribute-name">
+			<starts-with>
+				<expression>(&lt;)</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(>)</expression>
+			</ends-with>
+		</zone>
+		
+		<!-- NORMAL LINK / IMAGE -->
+		<zone>
+			<expression>([^!])([\[])(.*)([\]][ ]{0,1})([\(])(.*)([\)])</expression>
+			<capture number="3" name="attribute-name"/>
+			<capture number="6" name="string.quoted"/>
+		</zone>
+		
+		<!-- REFERENCE LINK / IMAGE -->
+		<zone>
+			<expression>([\[])(.*)([\]])([\[])(.*)([\]])</expression>
+			<capture number="2" name="attribute-name"/>
+			<capture number="5" name="attribute-name"/>
+		</zone>
+				
+		<!-- NORMAL IMAGE -->
+		<zone>
+			<expression>!([\[])(.*)([\]])([\(])(.*)([\)])</expression>
+			<capture number="2" name="attribute-name"/>
+			<capture number="5" name="string.quoted"/>
+		</zone>
+		
+		<!-- REFERENCE IMAGE -->
+		<zone>
+			<expression>!([\[])(.*)([\]])([\[])(.*)([\]])</expression>
+			<capture number="2" name="attribute-name"/>
+			<capture number="5" name="attribute-name"/>
+		</zone>
+		
+		<!-- REFERENCE DEFINITION -->
+		<zone>
+			<expression>^([\[])(.*)([\]])(:[ \t]{0,1})(.*)</expression>
+			<capture number="2" name="attribute-name"/>
+			<capture number="5" name="string.quoted"/>
+		</zone>
+		
 	</zones>
 </syntax>
