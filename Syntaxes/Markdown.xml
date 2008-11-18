@@ -74,14 +74,14 @@
 			</ends-with>
 		</zone>
 		
-		<!-- NORMAL LINK / IMAGE -->
+		<!-- NORMAL LINK -->
 		<zone>
 			<expression>([^!])([\[])(.*)([\]][ ]{0,1})([\(])(.*)([\)])</expression>
 			<capture number="3" name="attribute-name"/>
 			<capture number="6" name="string.quoted"/>
 		</zone>
 		
-		<!-- REFERENCE LINK / IMAGE -->
+		<!-- REFERENCE LINK -->
 		<zone>
 			<expression>([\[])(.*)([\]])([\[])(.*)([\]])</expression>
 			<capture number="2" name="attribute-name"/>
