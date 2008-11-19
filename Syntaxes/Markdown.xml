@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--	*	MARKDOWN Sugar Syntax file version 0.9.1
-		*	by David Czihak
-		*	www.davidczihak.com
-		*	this work is licensed under a Creative Commons Attribution-Non-Commercial-No Derivative Works 3.0 Austria License
-		*	http://idzr.org/k0zrm
+		*	by David Czihak and elliottcable
+		*	http://www.davidczihak.com, http://elliottcable.name
 -->
 
 <syntax name="text.markdown">
