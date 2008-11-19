@@ -18,14 +18,24 @@
 		</zone>
 		
 		<!--
-		  this really isn't ideal, the haeder text itself should be selected
-		  somehow - since we can't have multi-line regexen in Espresso, though, I
-		  have no idea how to go about that.
+			this really isn't ideal, the header text itself should be selected
+			somehow - since we can't have multi-line regexen in Espresso, though, I
+			have no idea how to go about that.
 		-->
 		<zone name="header.underlined.markdown">
 			<expression>^((=|-)+)$</expression>
 			<capture number="1" name="header.delimiter.underline"/>
 		</zone>
+		
+		<!--
+			this conflicts with the above, currently. I don't know how to get around
+			that.
+		-->
+		<!-- RULE -->
+		<!-- <zone name="horizontal-rule">
+			<expression>^(----+)$</expression>
+			<capture number="1" name="horizontal-rule.delimiter.underline"/>
+		</zone> -->
 		
 		<!-- ITALIC -->
 		<zone name="string.quoted.markdown">
