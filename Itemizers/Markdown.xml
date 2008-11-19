@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <itemizer>
 
-	<recipe name="function.markdown">
-		<class>ESBaseItem</class>
-		<start-selector>function.markdown:has-child(name:capture(name)):capture(itemizer-firstused) + curly.brace.open.markdown</start-selector>
-		<end-selector>curly.brace.close.markdown</end-selector>
-		<subrecipes>
-			<include-root-recipes/>
-		</subrecipes>
+	<recipe name="header.markdown">
+		<selector>header.markdown:has-child(name:capture(name)):capture(itemizer-firstused)</selector>
 	</recipe>
 	
 </itemizer>

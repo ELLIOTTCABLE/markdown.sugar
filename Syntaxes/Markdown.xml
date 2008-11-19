@@ -11,8 +11,8 @@
 		<!-- HEADER -->
 		<zone name="header.hashed.markdown">
 			<expression>([#]{1,6})(.*)$\n?</expression>
-			<capture number="1" name="attribute-name"/>
-			<capture number="2" name="keyword.control"/>
+			<capture number="1" name="punctuation.header.delimeter.hashed"/>
+			<capture number="2" name="name"/>
 		</zone>
 		
 		<!--
@@ -22,7 +22,7 @@
 		-->
 		<zone name="header.underlined.markdown">
 			<expression>^((=|-)+)$</expression>
-			<capture number="1" name="header.delimiter.underline"/>
+			<capture number="1" name="punctuation.header.delimiter.underline"/>
 		</zone>
 		
 		<!-- ITALIC -->
