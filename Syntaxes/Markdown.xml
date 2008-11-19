@@ -43,7 +43,7 @@
 		
 		<!-- PRE BLOCK TAG -->
 		<zone name="comment.block.markdown">
-			<expression>^([\t]{1}).*$([\n]{2})?</expression>
+			<expression>^(\t{1}|\s{4}).*$([\n]{2})?</expression>
 			<capture number="0" name="punctuation.definition.end"/>
 		</zone>
 		
