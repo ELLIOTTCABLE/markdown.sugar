@@ -11,7 +11,7 @@
 	<zones>
 		
 		<!-- HEADER -->
-		<zone>
+		<zone name="header.hashed.markdown">
 			<expression>([#]{1,6})(.*)$\n?</expression>
 			<capture number="1" name="attribute-name"/>
 			<capture number="2" name="keyword.control"/>
